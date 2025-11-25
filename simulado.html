@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado arquitetura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        legend {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #0056b3;
+            padding: 0 10px;
+        }
+        .alternativa {
+            display: block;
+            margin: 8px 0;
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .alternativa:hover:not(.correta):not(.incorreta) {
+            background-color: #eee;
+        }
+        /* Feedback Visual */
+        .correta {
+            background-color: #d4edda; /* Verde claro */
+            color: #155724; /* Texto verde escuro */
+            border: 1px solid #c3e6cb;
+            font-weight: bold;
+        }
+        .incorreta {
+            background-color: #f8d7da; /* Vermelho claro */
+            color: #721c24; /* Texto vermelho escuro */
+            border: 1px solid #f5c6cb;
+            font-weight: bold;
+        }
+        .botao-verificar {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .botao-verificar:hover {
+            background-color: #218838;
+        }
+        .feedback-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: none; /* Inicialmente escondida */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Quiz: Princípios SOLID, Métodos Ágeis e Padrões de Arquitetura</h1>
+    
+    <form id="quiz-form">
+        
+        <fieldset data-resposta-correta="D" name="q1">
+            <legend>1. Considere as seguintes afirmações sobre os princípios SOLID. I - SOLID é um acrônimo para cinco princípios da programação orientada a objetos, destinados a facilitar a compreensão, o desenvolvimento e a manutenção de software. II. Entre os princípios, o SRP (princípio da responsabilidade única) auxilia o uso de alta coesão na classe. III. Quanto maior o número de responsabilidades em uma classe, mais simples será seu teste unitário, além de aumentar consideravelmente o número de testes de interação a serem executados. É correto o que se afirmar somente em:</legend>
+            <label class="alternativa"><input type="radio" name="q1_opcao" value="A"> A) F, F, F.</label>
+            <label class="alternativa"><input type="radio" name="q1_opcao" value="B"> B) F, V, V.</label>
+            <label class="alternativa"><input type="radio" name="q1_opcao" value="C"> C) V, F, V.</label>
+            <label class="alternativa"><input type="radio" name="q1_opcao" value="D"> D) V, V, F.</label>
+            <label class="alternativa"><input type="radio" name="q1_opcao" value="E"> E) F, V, F.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="D" name="q2">
+            <legend>2. Os métodos ágeis são alternativas à gestão tradicional de projetos, com práticas eficazes que se destinam a permitir a entrega rápida e de alta qualidade do produto. Quais dos seguintes métodos são caracterizados por serem métodos ágeis?</legend>
+            <label class="alternativa"><input type="radio" name="q2_opcao" value="A"> A) Cascata, Xp, Scrum.</label>
+            <label class="alternativa"><input type="radio" name="q2_opcao" value="B"> B) XP, Scrum, Kanvan.</label>
+            <label class="alternativa"><input type="radio" name="q2_opcao" value="C"> C) Scrum, PX, cascata.</label>
+            <label class="alternativa"><input type="radio" name="q2_opcao" value="D"> D) XP, Scrum, Kanban.</label>
+            <label class="alternativa"><input type="radio" name="q2_opcao" value="E"> E) XP, OpenUp, PX.</label>
+        </fieldset>
+        
+        <fieldset data-resposta-correta="E" name="q3">
+            <legend>3. Em relação ao conjunto de práticas da modelagem ágil, qual se caracteriza por modelar um pouco, codificar um pouco, testar um pouco e depois entregar um pouco?</legend>
+            <label class="alternativa"><input type="radio" name="q3_opcao" value="A"> A) Usar ferramentas simples.</label>
+            <label class="alternativa"><input type="radio" name="q3_opcao" value="B"> B) Provar com código.</label>
+            <label class="alternativa"><input type="radio" name="q3_opcao" value="C"> C) Iterativa e simplicidade.</label>
+            <label class="alternativa"><input type="radio" name="q3_opcao" value="D"> D) Trabalho em equipe.</label>
+            <label class="alternativa"><input type="radio" name="q3_opcao" value="E"> E) Iterativa e incremental.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="B" name="q4">
+            <legend>4. Qual dos métodos a seguir era conhecido como uma ferramenta que apenas continha cartões em quadros visuais utilizados em processos ágeis?</legend>
+            <label class="alternativa"><input type="radio" name="q4_opcao" value="A"> A) CRC.</label>
+            <label class="alternativa"><input type="radio" name="q4_opcao" value="B"> B) Kanban.</label>
+            <label class="alternativa"><input type="radio" name="q4_opcao" value="C"> C) Kanvan.</label>
+            <label class="alternativa"><input type="radio" name="q4_opcao" value="D"> D) OpenUp.</label>
+            <label class="alternativa"><input type="radio" name="q4_opcao" value="E"> E) Do-Doing.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="D" name="q5">
+            <legend>5. Dentre as práticas de modelagem ágil, tem-se a prática prove com código. Qual a finalidade dessa prática?</legend>
+            <label class="alternativa"><input type="radio" name="q5_opcao" value="A"> A) Testar o programador do sistema.</label>
+            <label class="alternativa"><input type="radio" name="q5_opcao" value="B"> B) Saber se a equipe sabe modelar um problema.</label>
+            <label class="alternativa"><input type="radio" name="q5_opcao" value="C"> C) Mostrar que é possível criar soluções sozinho.</label>
+            <label class="alternativa"><input type="radio" name="q5_opcao" value="D"> D) Saber se a solução da modelagem é implementável em código.</label>
+            <label class="alternativa"><input type="radio" name="q5_opcao" value="E"> E) Usar ferramentas simples.</label>
+        </fieldset>
+        
+        <fieldset data-resposta-correta="B" name="q6">
+            <legend>6. Analisando o padrão de arquitetura MVC (Model-View-Controller), pode-se afirmar que:</legend>
+            <label class="alternativa"><input type="radio" name="q6_opcao" value="A"> A) o Model faz a comunicação entre a interface da View com o usuário e as regras de negócio. A função desse padrão de arquitetura é tornar possível a separação entre as camadas.</label>
+            <label class="alternativa"><input type="radio" name="q6_opcao" value="B"> B) a cada evento executado em uma interface, o Controller é comunicado e, por sua vez, faz a comunicação com a View e as regras de negócio. A função desse padrão de arquitetura é tornar possível a separação entre as camadas. 
+
+[Image of Model-View-Controller (MVC) architectural pattern structure and communication flow]
+</label>
+            <label class="alternativa"><input type="radio" name="q6_opcao" value="C"> C) a View é responsável por mostrar informações ao usuário, interpretá-las e passar as requisições ao Model. A função desse padrão é tornar possível a separação entre as camadas.</label>
+            <label class="alternativa"><input type="radio" name="q6_opcao" value="D"> D) o Controller contém a estrutura de dados e se comunica com a View por meio dos chamados de interação do usuário. A função desse padrão é tornar possível a separação entre as camadas.</label>
+            <label class="alternativa"><input type="radio" name="q6_opcao" value="E"> E) o Model contém a estrutura de dados e se comunica diretamente com a View, respondendo as suas requisições. A função desse padrão é tornar possível a separação entre as camadas.</label>
+        </fieldset>
+        
+        <fieldset data-resposta-correta="D" name="q7">
+            <legend>7. Em relação ao padrão arquitetural MVC, leia as seguintes afirmativas: I. O Controlador é como um gerenciador da interface do usuário e se comunica com o Modelo no padrão MVC para atualizar dados à Visão. II. A Visão notifica o Controlador sobre mudanças no estado da aplicação. Isso é feito por meio dos eventos disparados pela interação do usuário na interface. III. O padrão MVC foi inspirado no modelo MVP e surgiu na década de 1990. É correto o que se afirma somente em:</legend>
+            <label class="alternativa"><input type="radio" name="q7_opcao" value="A"> A) I</label>
+            <label class="alternativa"><input type="radio" name="q7_opcao" value="B"> B) II</label>
+            <label class="alternativa"><input type="radio" name="q7_opcao" value="C"> C) I e III.</label>
+            <label class="alternativa"><input type="radio" name="q7_opcao" value="D"> D) I e II.</label>
+            <label class="alternativa"><input type="radio" name="q7_opcao" value="E"> E) II e III.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="D" name="q8">
+            <legend>8. Padrão arquitetural que especifica que um determinado sistema deve ser desenvolvido em níveis e separa View e Model, tornando o código bem estruturado e permitindo uma resposta mais rápida às alterações de projeto e facilidade em utilização de testes. Que padrão é esse?</legend>
+            <label class="alternativa"><input type="radio" name="q8_opcao" value="A"> A) Padrão de arquitetura MVC.</label>
+            <label class="alternativa"><input type="radio" name="q8_opcao" value="B"> B) Padrão de arquitetura composite.</label>
+            <label class="alternativa"><input type="radio" name="q8_opcao" value="C"> C) Padrão de arquitetura MVP.</label>
+            <label class="alternativa"><input type="radio" name="q8_opcao" value="D"> D) Padrão de arquitetura MVVM. </label>
+            <label class="alternativa"><input type="radio" name="q8_opcao" value="E"> E) Padrão de arquitetura Silverlight.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="B" name="q9">
+            <legend>9. MVP é o acrônimo para Model-View-Presenter. As camadas as quais as seguintes funções estão relacionadas são, respectivamente: - Definir classes que representam os dados, ações e a validação lógica desses dados. - Fazer pedido ao modelo das requisições impostas pela interface e, após o retorno, disparar essas atualizações à interface. - Receber as interações do usuário pela interface.</legend>
+            <label class="alternativa"><input type="radio" name="q9_opcao" value="A"> A) Model - View - Presenter.</label>
+            <label class="alternativa"><input type="radio" name="q9_opcao" value="B"> B) Model - Presenter - View. </label>
+            <label class="alternativa"><input type="radio" name="q9_opcao" value="C"> C) View - Model - Presenter.</label>
+            <label class="alternativa"><input type="radio" name="q9_opcao" value="D"> D) View - Presenter - Model.</label>
+            <label class="alternativa"><input type="radio" name="q9_opcao" value="E"> E) Presenter - Model - View.</label>
+        </fieldset>
+        
+        <fieldset data-resposta-correta="B" name="q10">
+            <legend>10. Considere as seguintes afirmações sobre os padrões arquiteturais: I. O padrão MVC separa a apresentação e a interação dos dados do sistema... (definição incorreta). II. No padrão MVP, o Presenter é essencialmente o Controller do MVC, e tem como função atualizar a View quando o Model é alterado e sincronizar o Model em relação à View. III. O padrão MVVM é um padrão altamente testável. Qual(is) está(ão) correta(s)?</legend>
+            <label class="alternativa"><input type="radio" name="q10_opcao" value="A"> A) Apenas I e II.</label>
+            <label class="alternativa"><input type="radio" name="q10_opcao" value="B"> B) Apenas II e III.</label>
+            <label class="alternativa"><input type="radio" name="q10_opcao" value="C"> C) Apenas I e III.</label>
+            <label class="alternativa"><input type="radio" name="q10_opcao" value="D"> D) Apenas I.</label>
+            <label class="alternativa"><input type="radio" name="q10_opcao" value="E"> E) Apenas III.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="A" name="q11">
+            <legend>11. Assinale a alternativa que apresenta corretamente os principais benefícios promovidos pelo uso do DDD (Domain-Driven Design).</legend>
+            <label class="alternativa"><input type="radio" name="q11_opcao" value="A"> A) Comunicação da equipe, extensibilidade, testabilidade.</label>
+            <label class="alternativa"><input type="radio" name="q11_opcao" value="B"> B) Alinhamento do código com o negócio, favorecer reutilização de código, mínimo de acoplamento.</label>
+            <label class="alternativa"><input type="radio" name="q11_opcao" value="C"> C) Boas práticas de desenvolvimento, desenvolvimento rápido, independência da tecnologia.</label>
+            <label class="alternativa"><input type="radio" name="q11_opcao" value="D"> D) Qualidade do software desenvolvido, testes automatizados, modularização do software.</label>
+            <label class="alternativa"><input type="radio" name="q11_opcao" value="E"> E) Alta coesão das entidades, código com baixo acoplamento, documentação alinha com o domínio do software.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="B" name="q12">
+            <legend>12. No desenvolvimento de software guiado pelo Domain-Driven Design (DDD), o bloco voltado para a interface do usuário é responsável:</legend>
+            <label class="alternativa"><input type="radio" name="q12_opcao" value="A"> A) pela lógica de negócio. Ela é apenas uma camada fina, responsável por conectar a visão ao controlador.</label>
+            <label class="alternativa"><input type="radio" name="q12_opcao" value="B"> B) pela exibição de informações do sistema ao usuário e também por interpretar comandos do usuário. </label>
+            <label class="alternativa"><input type="radio" name="q12_opcao" value="C"> C) pelos conceitos, regras e lógicas de negócio. Todo o foco de DDD está nessa camada.</label>
+            <label class="alternativa"><input type="radio" name="q12_opcao" value="D"> D) por fornecer recursos técnicos que darão suporte às camadas superiores. persistência de dados, conexões com bancos de dados, envio de mensagens por redes, gravação e leitura de discos, etc.</label>
+            <label class="alternativa"><input type="radio" name="q12_opcao" value="E"> E) pela integração das regras de negócio com as transações que podem ser feitas com um banco de dados.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="C" name="q13">
+            <legend>13. O desenvolvimento de software baseado no modelo DDD é um conceito atual com a utilização de velhas práticas de desenvolvimento. Assinale a alternativa a seguir que melhor define esse modelo.</legend>
+            <label class="alternativa"><input type="radio" name="q13_opcao" value="A"> A) É uma receita pronta sobre como desenvolver uma arquitetura baseada em interface do usuário, infraestrutura, aplicação e domínio.</label>
+            <label class="alternativa"><input type="radio" name="q13_opcao" value="B"> B) É um arcabouço de software com estruturas semiprontas para implementação de uma arquitetura de software em um domínio específico.</label>
+            <label class="alternativa"><input type="radio" name="q13_opcao" value="C"> C) É uma abordagem de modelagem de software com objetivo de facilitar a implementação de regras de negócio baseado em um domínio.</label>
+            <label class="alternativa"><input type="radio" name="q13_opcao" value="D"> D) É um framework de desenvolvimento para acelerar o processo de implementação de um domínio de software específico.</label>
+            <label class="alternativa"><input type="radio" name="q13_opcao" value="E"> E) É um conjunto de boas práticas de programação que guiam o desenvolvimento de acordo com a ideia do desenvolvedor sobre o que deve apresentar um domínio de software especifico.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="E" name="q14">
+            <legend>14. Por definição, um software embutido é caracterizado pelo uso no controle de sistemas que reagem a eventos externos em seu ambiente. Dentro da Engenharia de Software, o software embutido é importante devido ao fato de:</legend>
+            <label class="alternativa"><input type="radio" name="q14_opcao" value="A"> A) todos os dispositivos hidráulicos incluírem software.</label>
+            <label class="alternativa"><input type="radio" name="q14_opcao" value="B"> B) o seu sistema apresentar uma capacidade de resposta full time superior a outros sistemas.</label>
+            <label class="alternativa"><input type="radio" name="q14_opcao" value="C"> C) a correção do sistema ocorrer indicando como as entradas de sistema mapeiam as saídas.</label>
+            <label class="alternativa"><input type="radio" name="q14_opcao" value="D"> D) seu funcionamento correto depender exclusivamente dos resultados produzidos por ele.</label>
+            <label class="alternativa"><input type="radio" name="q14_opcao" value="E"> E) esses sistemas exigerem uma resposta muito rápida. </label>
+        </fieldset>
+        
+        <fieldset data-resposta-correta="A" name="q15">
+            <legend>15. No processo de projeto para sistemas embutidos, os projetistas de software devem levar em conta o detalhamento do projeto e o comportamento do hardware de sistema. Um ponto crucial para muitos sistemas de tempo real consiste em:</legend>
+            <label class="alternativa"><input type="radio" name="q15_opcao" value="A"> A) analisar os custos e o consumo de energia do hardware.</label>
+            <label class="alternativa"><input type="radio" name="q15_opcao" value="B"> B) analisar processadores variados que oferecem suporte a sistemas embutidos.</label>
+            <label class="alternativa"><input type="radio" name="q15_opcao" value="C"> C) analisar hardwares especiais que podem apenas ser projetados.</label>
+            <label class="alternativa"><input type="radio" name="q15_opcao" value="D"> D) analisar softwares de suporte que devem ser considerados no fim do processo.</label>
+            <label class="alternativa"><input type="radio" name="q15_opcao" value="E"> E) analisar softwares embutidos baseados em um modelo passivo.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="C" name="q16">
+            <legend>16. Que padrão de arquitetura de tempo real é usado com frequência em sistemas embutidos e qual a sua finalidade?</legend>
+            <label class="alternativa"><input type="radio" name="q16_opcao" value="A"> A) Observar e reagir, usado quando dados precisam ser transferidos de uma representação para outra antes do processamento.</label>
+            <label class="alternativa"><input type="radio" name="q16_opcao" value="B"> B) Pipeline de processo, usado quando uma série de sensores é acompanhada e exibida esporadicamente.</label>
+            <label class="alternativa"><input type="radio" name="q16_opcao" value="C"> C) Controle de ambiente, usado quando um sistema acrescenta sensores que apresentam informações referentes ao ambiente e atuadores capazes de transformá-lo.</label>
+            <label class="alternativa"><input type="radio" name="q16_opcao" value="D"> D) Observar e reagir, usado quando um sistema retira sensores que fornecem informações referentes ao ambiente.</label>
+            <label class="alternativa"><input type="radio" name="q16_opcao" value="E"> E) Controle de ambiente, usado quando uma série de sensores é acompanhada e exibida esporadicamente.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="C" name="q17">
+            <legend>17. Qual é o objetivo da escalabilidade em um sistema distribuído?</legend>
+            <label class="alternativa"><input type="radio" name="q17_opcao" value="A"> A) Que os usuários possam perceber que estão acessando um sistema distribuído.</label>
+            <label class="alternativa"><input type="radio" name="q17_opcao" value="B"> B) Que os requisitos de segurança sejam atingíveis.</label>
+            <label class="alternativa"><input type="radio" name="q17_opcao" value="C"> C) Que seja possível aumentar a capacidade computacional. </label>
+            <label class="alternativa"><input type="radio" name="q17_opcao" value="D"> D) Que sejam utilizados protocolos conhecidos e padronizados mundialmente.</label>
+            <label class="alternativa"><input type="radio" name="q17_opcao" value="E"> E) Que os requisitos de segurança sejam cumpridos.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="C" name="q18">
+            <legend>18. Qual é o objetivo da escalabilidade em um sistema distribuído? (Repetição)</legend>
+            <label class="alternativa"><input type="radio" name="q18_opcao" value="A"> A) Que os usuários possam perceber que estão acessando um sistema distribuído.</label>
+            <label class="alternativa"><input type="radio" name="q18_opcao" value="B"> B) Que os requisitos de segurança sejam atingíveis.</label>
+            <label class="alternativa"><input type="radio" name="q18_opcao" value="C"> C) Que seja possível aumentar a capacidade computacional. </label>
+            <label class="alternativa"><input type="radio" name="q18_opcao" value="D"> D) Que sejam utilizados protocolos conhecidos e padronizados mundialmente.</label>
+            <label class="alternativa"><input type="radio" name="q18_opcao" value="E"> E) Que os requisitos de segurança sejam cumpridos.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="C" name="q19">
+            <legend>19. Em relação ao gerenciamento dos processos em arquitetura mestre-escravo, pode-se afirmar que usualmente:</legend>
+            <label class="alternativa"><input type="radio" name="q19_opcao" value="A"> A) Pode ter diversos processos mestres e somente um escravo.</label>
+            <label class="alternativa"><input type="radio" name="q19_opcao" value="B"> B) Pode ter diversos processos mestres e diversos escravos.</label>
+            <label class="alternativa"><input type="radio" name="q19_opcao" value="C"> C) Pode ter apenas um processo mestre e diversos escravos. 
+
+[Image of Master-Slave architecture in distributed systems]
+</label>
+            <label class="alternativa"><input type="radio" name="q19_opcao" value="D"> D) Pode ter apenas um processo mestre e um escravo.</label>
+            <label class="alternativa"><input type="radio" name="q19_opcao" value="E"> E) Independentemente da quantidade de processos mestre e escravos, é obrigatório ter um middleware entre eles.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="D" name="q20">
+            <legend>20. Qual das opções abaixo representa a melhor decisão ao se iniciar um projeto de WebApp, dada a necessidade de projetos que tomem cada vez menos tempo e aplicações cada vez mais adaptáveis?</legend>
+            <label class="alternativa"><input type="radio" name="q20_opcao" value="A"> A) Iniciar a construção da aplicação o mais rápido possível paralelamente com atividades secundárias, como a coleta de requisitos.</label>
+            <label class="alternativa"><input type="radio" name="q20_opcao" value="B"> B) Adaptar modelos tradicionais, realizando todas as etapas previstas no processo de desenvolvimento, e, sempre que possível, realizar atividades em paralelo.</label>
+            <label class="alternativa"><input type="radio" name="q20_opcao" value="C"> C) Adaptar modelos tradicionais, suprimindo, sempre que necessário, as atividades que forem julgadas desnecessárias.</label>
+            <label class="alternativa"><input type="radio" name="q20_opcao" value="D"> D) Utilizar modelos de desenvolvimento ágeis uma vez que são altamente adaptativos e preparados para esse tipo de aplicação.</label>
+            <label class="alternativa"><input type="radio" name="q20_opcao" value="E"> E) Adaptar modelos tradicionais, evitando a etapa de modelagem dos requisitos por não se adaptarem a esse tipo de aplicação.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="D" name="q21">
+            <legend>21. A entrada de um usuário em um WebApp pode ocorrer a partir de diversas origens. Em qual das atividades a seguir esse tipo de problema (interface do usuário) deve ser tratado?</legend>
+            <label class="alternativa"><input type="radio" name="q21_opcao" value="A"> A) Projeto de arquitetura.</label>
+            <label class="alternativa"><input type="radio" name="q21_opcao" value="B"> B) Projeto de componentes.</label>
+            <label class="alternativa"><input type="radio" name="q21_opcao" value="C"> C) Projeto de navegação.</label>
+            <label class="alternativa"><input type="radio" name="q21_opcao" value="D"> D) Projeto de interface. </label>
+            <label class="alternativa"><input type="radio" name="q21_opcao" value="E"> E) Projeto de conteúdo.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="E" name="q22">
+            <legend>22. O modelo de arquitetura de navegação que permite o agrupamento de dois ou mais objetos por categoria e que é altamente aplicado em modelos de e-commerce é conhecido como:</legend>
+            <label class="alternativa"><input type="radio" name="q22_opcao" value="A"> A) modelo linear.</label>
+            <label class="alternativa"><input type="radio" name="q22_opcao" value="B"> B) modelo linear com desvio de fluxo.</label>
+            <label class="alternativa"><input type="radio" name="q22_opcao" value="C"> C) modelo linear com fluxo alternativo.</label>
+            <label class="alternativa"><input type="radio" name="q22_opcao" value="D"> D) modelo em estrela.</label>
+            <label class="alternativa"><input type="radio" name="q22_opcao" value="E"> E) modelo em grade. 
+
+[Image of Grid web navigation structure]
+</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="B" name="q23">
+            <legend>23. A descrição "Capacidade de busca e recuperação de dados, facilidade de navegação e leitura das informações, características relacionadas ao domínio da aplicação, etc.” é referente a qual requisito de qualidade de um WebApp?</legend>
+            <label class="alternativa"><input type="radio" name="q23_opcao" value="A"> A) Funcionalidade.</label>
+            <label class="alternativa"><input type="radio" name="q23_opcao" value="B"> B) Usabilidade.</label>
+            <label class="alternativa"><input type="radio" name="q23_opcao" value="C"> C) Confiabilidade.</label>
+            <label class="alternativa"><input type="radio" name="q23_opcao" value="D"> D) Facilidade de manutenção.</label>
+            <label class="alternativa"><input type="radio" name="q23_opcao" value="E"> E) Eficiência.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="B" name="q24">
+            <legend>24. Para desenvolver softwares móveis de qualidade, testes devem ser realizados. O teste funcional busca conferir:</legend>
+            <label class="alternativa"><input type="radio" name="q24_opcao" value="A"> A) a experiência do usuário, a facilidade e a possibilidade de realizar as ações pretendidas.</label>
+            <label class="alternativa"><input type="radio" name="q24_opcao" value="B"> B) a implementação e o funcionamento de todos os requisitos, que devem corresponder ao esperado.</label>
+            <label class="alternativa"><input type="radio" name="q24_opcao" value="C"> C) o tempo de resposta, eliminando lentidão ou travamento do aplicativo.</label>
+            <label class="alternativa"><input type="radio" name="q24_opcao" value="D"> D) a capacidade de comunicação do seu aplicativo com outros aplicativos e redes.</label>
+            <label class="alternativa"><input type="radio" name="q24_opcao" value="E"> E) a interação do aplicativo com hardware e todos os tipos de rede de maneira satisfatória.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="D" name="q25">
+            <legend>25. Qual das dificuldades técnicas no desenvolvimento não compreende o desenvolvimento móvel?</legend>
+            <label class="alternativa"><input type="radio" name="q25_opcao" value="A"> A) Diversas plataformas de hardware e software.</label>
+            <label class="alternativa"><input type="radio" name="q25_opcao" value="B"> B) Diversas linguagens de programação.</label>
+            <label class="alternativa"><input type="radio" name="q25_opcao" value="C"> C) Uso de bateria.</label>
+            <label class="alternativa"><input type="radio" name="q25_opcao" value="D"> D) Ciclos de desenvolvimento longos.</label>
+            <label class="alternativa"><input type="radio" name="q25_opcao" value="E"> E) Uso do contexto da aplicação.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="A" name="q26">
+            <legend>26. Para um protótipo de tela de softwares móveis com alta fidedignidade, uma ferramenta indicada é:?</legend>
+            <label class="alternativa"><input type="radio" name="q26_opcao" value="A"> A) Figma. 
+
+[Image of Figma interface for UI design]
+</label>
+            <label class="alternativa"><input type="radio" name="q26_opcao" value="B"> B) Xcode.</label>
+            <label class="alternativa"><input type="radio" name="q26_opcao" value="C"> C) Android Studio.</label>
+            <label class="alternativa"><input type="radio" name="q26_opcao" value="D"> D) MarvenApp.</label>
+            <label class="alternativa"><input type="radio" name="q26_opcao" value="E"> E) Balsamiq.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="E" name="q27">
+            <legend>27. É uma boa prática no desenvolvimento de aplicativos móveis (em relação às Store rules):</legend>
+            <label class="alternativa"><input type="radio" name="q27_opcao" value="A"> A) usar sempre cores neutras, buscando baixo contraste entre fontes e fundos.</label>
+            <label class="alternativa"><input type="radio" name="q27_opcao" value="B"> B) fazer uso de barras de rolagens com formulários extensos.</label>
+            <label class="alternativa"><input type="radio" name="q27_opcao" value="C"> C) evitar a possibilidade de personalização do software.</label>
+            <label class="alternativa"><input type="radio" name="q27_opcao" value="D"> D) ignorar o contexto da aplicação nos dispositivos móveis.</label>
+            <label class="alternativa"><input type="radio" name="q27_opcao" value="E"> E) serem os rótulos de widget de fácil reconhecimento e de tamanho adequado.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="C" name="q28">
+            <legend>28. Analisando os cinco princípios SOLID, qual afirmação está correta?</legend>
+            <label class="alternativa"><input type="radio" name="q28_opcao" value="A"> A) o princípio do aberto/fechado (OCP) define que as entidades e classes devem ser substituídas por suas classes base e vice-versa, sem editar o código e sim estendê-lo.</label>
+            <label class="alternativa"><input type="radio" name="q28_opcao" value="B"> B) o princípio da substituição de Liskov (LSP) preocupa-se com a coesão de interfaces, visando a poucos comportamentos...</label>
+            <label class="alternativa"><input type="radio" name="q28_opcao" value="C"> C) o princípio da responsabilidade única (SRP) tem como objetivo atingir as classes e suas responsabilidades dentro do sistema, visando tornar a classe com alta coesão. </label>
+            <label class="alternativa"><input type="radio" name="q28_opcao" value="D"> D) o princípio da inversão de dependência (DIP) reforça a dependência de implementação e evita abstração.</label>
+            <label class="alternativa"><input type="radio" name="q28_opcao" value="E"> E) o princípio da segregação de interfaces (ISP) reforça o uso de muitas classes, com um único propósito...</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="E" name="q29">
+            <legend>29. Com relação aos princípios SOLID, o princípio que defende que módulos de alto nível não devem depender de módulos de baixo nível e que ambos devem depender de abstrações é:</legend>
+            <label class="alternativa"><input type="radio" name="q29_opcao" value="A"> A) princípio SRP (single responsibility principle).</label>
+            <label class="alternativa"><input type="radio" name="q29_opcao" value="B"> B) princípio OCP (open/closed principle).</label>
+            <label class="alternativa"><input type="radio" name="q29_opcao" value="C"> C) princípio LSP (Liskov substitution principle).</label>
+            <label class="alternativa"><input type="radio" name="q29_opcao" value="D"> D) princípio ISP (interface segregation principle).</label>
+            <label class="alternativa"><input type="radio" name="q29_opcao" value="E"> E) princípio DIP (dependency inversion principle). </label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="A" name="q30">
+            <legend>30. As definições: I. Classes derivadas devem ser substituíveis por suas classes base... II. Separar responsabilidades em diferentes classes... III. Classes devem ser abertas para extensão... Os princípios SOLID aos quais essas funções estão relacionadas são, respectivamente:</legend>
+            <label class="alternativa"><input type="radio" name="q30_opcao" value="A"> A) LSP, SRP e OCP.  </label>
+            <label class="alternativa"><input type="radio" name="q30_opcao" value="B"> B) LSP, SRP e ISP.</label>
+            <label class="alternativa"><input type="radio" name="q30_opcao" value="C"> C) DIP, SRP e OCP.</label>
+            <label class="alternativa"><input type="radio" name="q30_opcao" value="D"> D) SRC, LSP e OCP.</label>
+            <label class="alternativa"><input type="radio" name="q30_opcao" value="E"> E) ISP, DIP e SRC.</label>
+        </fieldset>
+
+        <fieldset data-resposta-correta="D" name="q31">
+            <legend>31. Considere as seguintes afirmações sobre os princípios SOLID. I - SOLID é um acrônimo para cinco princípios da programação orientada a objetos, destinados a facilitar a compreensão, o desenvolvimento e a manutenção de software. II. Entre os princípios, o SRP (princípio da responsabilidade única) auxilia o uso de alta coesão na classe. III. Quanto maior o número de responsabilidades em uma classe, mais simples será seu teste unitário... É correto o que se afirmar somente em:</legend>
+            <label class="alternativa"><input type="radio" name="q31_opcao" value="A"> A) F, F, F.</label>
+            <label class="alternativa"><input type="radio" name="q31_opcao" value="B"> B) F, V, V.</label>
+            <label class="alternativa"><input type="radio" name="q31_opcao" value="C"> C) V, F, V.</label>
+            <label class="alternativa"><input type="radio" name="q31_opcao" value="D"> D) V, V, F.</label>
+            <label class="alternativa"><input type="radio" name="q31_opcao" value="E"> E) F, V, F.</label>
+        </fieldset>
+
+        <button type="button" class="botao-verificar" onclick="verificarRespostas()">Verificar Respostas</button>
+        <p id="pontuacao" class="feedback-message"></p>
+    </form>
+</div>
+
+<script>
+    function verificarRespostas() {
+        const form = document.getElementById('quiz-form');
+        const fieldsets = form.querySelectorAll('fieldset');
+        let acertos = 0;
+        let totalQuestoes = 0;
+
+        fieldsets.forEach(fieldset => {
+            totalQuestoes++;
+            const respostaCorreta = fieldset.getAttribute('data-resposta-correta');
+            const nomeOpcao = fieldset.getAttribute('name') + '_opcao';
+            const opcoes = fieldset.querySelectorAll(`input[name="${nomeOpcao}"]`);
+            
+            let opcaoMarcada = null;
+            let marcadaEstaCorreta = false;
+            
+            // 1. Limpa classes de feedback anterior e procura a opção marcada
+            opcoes.forEach(input => {
+                const label = input.closest('label');
+                label.classList.remove('correta', 'incorreta');
+                
+                if (input.checked) {
+                    opcaoMarcada = input.value;
+                    
+                    // 2. Compara a resposta marcada
+                    if (opcaoMarcada === respostaCorreta) {
+                        marcadaEstaCorreta = true;
+                        acertos++;
+                    }
+                }
+                
+                // 3. Destaca a resposta correta e a marcada (se houver)
+                if (input.value === respostaCorreta) {
+                    label.classList.add('correta');
+                } else if (input.checked && !marcadaEstaCorreta) {
+                    label.classList.add('incorreta');
+                }
+            });
+
+            // 4. Desabilita todas as opções após a verificação
+            opcoes.forEach(input => {
+                input.disabled = true;
+            });
+        });
+
+        // 5. Exibe a pontuação final
+        const pontuacaoElement = document.getElementById('pontuacao');
+        pontuacaoElement.textContent = `Você acertou ${acertos} de ${totalQuestoes} questões!`;
+        pontuacaoElement.style.display = 'block';
+        pontuacaoElement.style.backgroundColor = '#cfe2ff'; // Azul claro
+        pontuacaoElement.style.color = '#084298'; // Texto azul escuro
+
+        // 6. Desabilita o botão de verificação
+        document.querySelector('.botao-verificar').disabled = true;
+        document.querySelector('.botao-verificar').textContent = 'Respostas Verificadas';
+    }
+</script>
+
+</body>
+</html>
