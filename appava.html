@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Entrar no AVA D2L</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0; padding: 24px; display: grid; place-items: center; min-height: 100dvh;
+      background: #0c2a45; color: #fff;
+    }
+    .card {
+      width: min(560px, 95vw); background: #fff; color: #111; border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2); padding: 24px;
+    }
+    h1 { margin: 0 0 8px 0; font-size: 1.4rem; }
+    p  { margin: 0 0 16px 0; opacity: .85; }
+    button, a.btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 18px; border-radius: 10px; border: none; cursor: pointer;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      background: #00589b; color: #fff;
+    }
+    button:hover, a.btn:hover { background: #00497f; }
+    .hint { font-size: .9rem; opacity: .75; margin-top: 12px; }
+    .muted { opacity: .6; font-size: .85rem; margin-top: 12px; }
+    code { background: #f3f3f3; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Acessar o AVA D2L</h1>
+    <p>Clique para abrir o AVA logado via SSO da instituição.</p>
+
+    <!-- Link direto (abre nova aba/janela — melhor chance de usar o navegador do sistema) -->
+    <p>
+      <a id="link-https" class="btn" href="https://trar no AVA D2L
+      </a>
+    </p>
+
+    <!-- Botão com lógica de tentativa via intent:// (Android) + fallback -->
+    <p class="hint">Se estiver dentro de um app/embutido, use o botão abaixo (tenta Chrome/Android antes de cair no HTTPS):</p>
+    <p>
+      <button id="btn-intent">Entrar com melhor compatibilidade</button>
+    </p>
+
+    <p class="muted">
+      Dica: se o IdP já tiver sessão ativa no dispositivo, o AVA abrirá diretamente.
+      Caso contrário, o IdP pode solicitar autenticação uma única vez.
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      const BRIGHTSPACE_URL = "https://ava.faesa.br/d2l/login";
+
+      // Heurísticas simples para detectar Android/iOS e apps embutidos (ex.: Instagram, Facebook, etc.)
+      const ua = navigator.userAgent || "";
+      const isAndroid = /Android/i.test(ua);
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+      const isInAppBrowser =
+        /(FBAN|FBAV|Instagram|Line|Twitter|TikTok|CriOS|OPR\//i.test(ua) ||
+        // heurística extra: ausência de "Safari" no iOS às vezes indica WebView
+        (isIOS && !/Safari/i.test(ua));
+
+      // Botão que tenta abrir via intent:// (Android) e cai para HTTPS se falhar
+      const btn = document.getElementById("btn-intent");
+      btn?.addEventListener("click", function () {
+        if (isAndroid) {
+          // Tenta abrir no Chrome via intent://
+          const origin = BRIGHTSPACE_URL.replace(/^https?:\/\//, "");
+          const intentUrl =
+            `intent://${origin}` +
+            "#Intent;scheme=https;package=com.android.chrome;end";
+
+          // Estratégia:
+          // 1) Tenta intent:// (se estiver em WebView, muitas vezes abre o Chrome com cookies do SSO)
+          // 2) Se o intent falhar (não suportado), faz fallback pro HTTPS normal
+          let opened = false;
+          try {
+            window.location.href = intentUrl;
+            opened = true;
+          } catch (e) {
+            opened = false;
+          }
+          // Fallback: se não abriu com intent, tenta a URL normal em nova aba
+          setTimeout(function () {
+            if (!opened) {
+              window.open(BRIGHTSPACE_URL, "_blank", "noopener,noreferrer");
+            }
+          }, 250);
+        } else if (isIOS) {
+          // iOS não tem intent://. Melhor opção é abrir em nova aba (pode acionar Safari dependendo do contexto).
+          window.open(BRIGHTSPACE_URL, "_blank", "noopener,noreferrer");
+        } else {
+          // Desktop / outros
+          window.open(BRIGHTSPACE_URL, "_blank", "noopener,noreferrer");
+        }
+      });
+
+      // Se você quiser forçar sempre a nova aba (sem o botão “compatibilidade”):
+      // document.getElementById('link-https').click();
+      //
+      // Não recomendado automaticamente, para não bloquear por pop-up nos navegadores.
+    })();
+  </script>
+</body>
+</html>
